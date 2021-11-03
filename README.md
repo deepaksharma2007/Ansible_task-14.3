@@ -1,4 +1,4 @@
-# 🔰  Configure Webserver Inside different OS By Ansible 🔰
+# 🔰Configure Webserver Inside different OS By Ansible
 
 ✨ I create an ansible playbook that will configure Apache webserver in Redhat and Ubuntu .
 
