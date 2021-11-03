@@ -1,0 +1,42 @@
+- hosts: localhost
+  vars_files:
+     - "{{ansible_facts['distribution']}}.yml"
+
+  tasks:
+          # - name: Print all available facts
+          #debug:
+          #var: ansible_facts
+
+  - name: Install webserver
+    package:
+       name: "{{webserver}}"
+       state: present
+
+  - name: Start service
+    service:
+        name: "{{webserver}}"
+        state: started
+  - name: "Copy the Web content to the Docker Container "
+    copy:
+      dest: "/var/www/html/index.html"
+      content: "This is my REDHAT server!!!!"
+
+- hosts: ubuntu
+  vars_files:
+    - "{{ansible_facts['distribution']}}.yml"
+ 
+  tasks:
+  - name: Install webserver
+    package:
+       name: "{{webserver}}"
+       state: present
+
+  - name: Start service
+    service:
+        name: "{{webserver}}"
+        state: started
+  
+  - name: "Copy the Web content to the Docker Container "
+    copy:
+      dest: "/var/www/html/index.html"
+      content: "This is my UBUNTU server!!!"
